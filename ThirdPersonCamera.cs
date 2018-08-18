@@ -79,13 +79,13 @@ public class ThirdPersonCamera : MonoBehaviour {
         Quaternion camRot = Quaternion.Euler(SmoothY, SmoothX, 0.0f);   
 
 
-        PlayerCamera.transform.rotation = camRot;  
+      
 
         
         Vector3 camDistance = Player.position + Vector3.up * HightOffset + PlayerCamera.transform.right * RightOffset - PlayerCamera.transform.forward * Distance;
-     
+      
         PlayerCamera.transform.position = camDistance;
-
+        PlayerCamera.transform.rotation = camRot;  
        
         CameraCollision();
 
