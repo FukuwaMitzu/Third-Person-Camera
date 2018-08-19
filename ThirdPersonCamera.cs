@@ -58,7 +58,7 @@ public class ThirdPersonCamera : MonoBehaviour {
     {
 
 
-        //For lock the mouse, you could delete thouse lines.
+       
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         /*--------------------------------------------*/
@@ -68,7 +68,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         offsetY -= Input.GetAxis("Mouse Y") * MouseSensitivity;
 
 
-        //We mind dont want the character look up or look down more than 90° so we clamp it. 
+        //We might dont want the character look up or look down more than 90° so we clamp it. 
         offsetY = Mathf.Clamp(offsetY, -90, 90);                  
 
 
