@@ -24,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour {
     public float minDistance;
     public float maxDistance;
     float Distance;
-   
+    float wallOffset = 0.2f;
 
     [Space(10)]                             
     public LayerMask CameraOcclusion;      
@@ -45,12 +45,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 
     private void Awake()
     {
-       
         if (PlayerCamera == null && GetComponent<Camera>())
-            PlayerCamera = GetComponent<Camera>();
-
-
-       
+            PlayerCamera = GetComponent<Camera>();      
     }
 
 
@@ -101,13 +97,10 @@ public class ThirdPersonCamera : MonoBehaviour {
         bool lineCast = Physics.Linecast(camDistance, PlayerCamera.transform.position - PlayerCamera.transform.forward , out hit, CameraOcclusion);
        
         if (lineCast)
-        {
-           
-            float wallOffset = 0.2f;
+        {       
             Distance = Mathf.Clamp(Distance, minDistance, maxDistance + wallOffset);
             Distance = Mathf.Lerp(Distance, hit.distance - wallOffset, 0.5f);
         }
-     
         else
         {
             Distance = Mathf.Lerp(Distance, maxDistance, 0.5f);
